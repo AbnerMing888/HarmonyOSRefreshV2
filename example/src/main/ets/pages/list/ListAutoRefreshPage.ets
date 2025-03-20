@@ -1,0 +1,64 @@
+import { ActionBar } from '../ActionBar'
+import { ListView, RefreshController } from '@abner/refresh_v2'
+
+/**
+ * AUTHOR:AbnerMing
+ * DATE:2025/3/20
+ * INTRODUCE:自动刷新
+ * */
+
+@Entry
+@ComponentV2
+struct ListAutoRefreshPage {
+  controller: RefreshController = new RefreshController() //刷新控制器
+  @Local array: Array<number> = []
+
+  aboutToAppear() {
+    for (let i = 0; i < 50; i++) {
+      this.array.push(i)
+    }
+
+    //自动刷新
+    this.controller.autoRefresh()
+  }
+
+  /**
+   * Author:AbnerMing
+   * Describe:条目布局
+   * @param item  数据对象
+   * @param index  数据索引
+   */
+  @Builder
+  itemLayout(item: Object, _: number): void {
+    Text("测试数据" + item)
+      .width("95%")
+      .height(50)
+      .margin(10)
+      .textAlign(TextAlign.Center)
+      .border({ width: 1, color: Color.Pink })
+  }
+
+  build() {
+    Column() {
+      ActionBar({ title: "刷新加载列表ListView" })
+      ListView({
+        items: this.array,
+        itemLayout: (item, index) => this.itemLayout(item, index),
+        controller: this.controller, //控制器，负责关闭下拉和上拉
+        onRefresh: () => {
+          //下拉刷新
+          setTimeout(() => {
+            this.controller.finishRefresh()
+          }, 3000)
+        },
+        onLoadMore: () => {
+          //上拉加载
+          setTimeout(() => {
+            //模拟耗时
+            this.controller.finishLoadMore()
+          }, 3000)
+        }
+      })
+    }
+  }
+}

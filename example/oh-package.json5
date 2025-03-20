@@ -1,0 +1,13 @@
+{
+  "license": "",
+  "devDependencies": {},
+  "author": "",
+  "name": "example",
+  "description": "Please describe the basic information.",
+  "main": "",
+  "version": "1.0.0",
+  "dependencies": {
+    "@abner/refresh_v2": "file:./libs/refresh-signed-1.0.0.har",
+    "@abner/tab": "file:libs/tab.har"
+  }
+}
