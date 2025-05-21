@@ -28,6 +28,7 @@
     "pages/grid/GridViewNetLazyPage",
     "pages/grid/GridDropPage",
     "pages/layout/LayoutViewPage",
+    "pages/layout/WebViewPage",
     "pages/layout/ListLayoutViewPage",
     "pages/layout/StickLayoutViewPage",
     "pages/staggered/StaggeredPage",
@@ -55,6 +56,8 @@
     "pages/list/ListViewFooterPage",
     "pages/group/ListItemGroupNoStickyPage",
     "pages/sticky/StickyTopActionBarPage",
-    "pages/staggered/ArbitrarilyStaggeredStickyTopPage"
+    "pages/staggered/ArbitrarilyStaggeredStickyTopPage",
+    "pages/list/ListViewPositioningPage",
+    "pages/list/ListViewEnableSpringPage"
   ]
 }

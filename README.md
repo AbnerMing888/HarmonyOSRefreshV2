@@ -1,13 +1,21 @@
 ## 介绍
 
+<p align="center">
+<img src="https://vipandroid-image.oss-cn-beijing.aliyuncs.com/harmony/abner.jpg" width="100px" /><br/>
+<span style="font-size:12px;color:red;">扫码关注，千帆起航，共筑鸿蒙！</span>
+</p>
+
 refresh_v2，是一款支持V2装饰器，简单，高效的上拉下拉刷新组件，支持列表、网格、瀑布流、支持各种任意组件刷新，支持侧滑删除、条目吸顶，下滑二楼等功能。
 
 如果您打算继续使用V1装饰器版本刷新库，可点击直达：[refresh](https://ohpm.openharmony.cn/#/cn/detail/@abner%2Frefresh)
 
-**v1和V2使用方式完全一样，大家可无缝切换，只需修改下依赖即可。**
+**v1和V2使用方式完全一样，大家可无缝切换，只需修改下依赖和导包即可。**
 
-如果您只想简单的下拉刷新和上拉加载，并且耦合度低，建议您使用我的另一款**轻盈的刷新组件**
-，点击直达：[lithe_refresh](https://ohpm.openharmony.cn/#/cn/detail/@abner%2Flithe_refresh)
+如果您只想简单的下拉刷新和上拉加载，并且耦合度低，建议您使用我的另一款**轻盈的刷新组件**，
+
+v1版本：点击直达：[lithe_refresh](https://ohpm.openharmony.cn/#/cn/detail/@abner%2Flithe_refresh)
+
+v2版本：点击直达：[lithe_refresh_v2](https://ohpm.openharmony.cn/#/cn/detail/@abner%2Flithe_refresh_v2)
 
 主要功能点如下：
 
@@ -97,7 +105,7 @@ ohpm install @abner/refresh_v2
 方式二：在工程的oh-package.json5中设置三方包依赖，配置示例如下：
 
 ```
-"dependencies": { "@abner/refresh_v2": "^1.0.0"}
+"dependencies": { "@abner/refresh_v2": "^1.0.1"}
 ```
 
 <p align="center"><img src="https://vipandroid-image.oss-cn-beijing.aliyuncs.com/harmony/refresh/harmonyos_log_module.jpg" width="300"></p>
