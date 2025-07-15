@@ -105,7 +105,7 @@ ohpm install @abner/refresh_v2
 方式二：在工程的oh-package.json5中设置三方包依赖，配置示例如下：
 
 ```
-"dependencies": { "@abner/refresh_v2": "^1.0.1"}
+"dependencies": { "@abner/refresh_v2": "^1.0.2"}
 ```
 
 <p align="center"><img src="https://vipandroid-image.oss-cn-beijing.aliyuncs.com/harmony/refresh/harmonyos_log_module.jpg" width="300"></p>

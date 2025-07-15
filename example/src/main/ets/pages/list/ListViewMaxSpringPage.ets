@@ -9,7 +9,7 @@ import { ListView, RefreshController } from '@abner/refresh_v2'
 
 @Entry
 @ComponentV2
-struct ListViewNoSpringPage {
+struct ListViewMaxSpringPage {
   controller: RefreshController = new RefreshController() //刷新控制器
   @Local array: Array<number> = []
 
@@ -37,7 +37,7 @@ struct ListViewNoSpringPage {
 
   build() {
     Column() {
-      ActionBar({ title: "刷新加载列表无阻尼" })
+      ActionBar({ title: "刷新加载列表最大阻尼" })
       ListView({
         items: this.array,
         itemLayout: (item, index) => this.itemLayout(item, index),
