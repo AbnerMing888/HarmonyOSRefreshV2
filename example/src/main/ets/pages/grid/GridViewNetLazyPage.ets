@@ -64,8 +64,9 @@ struct GridViewNetLazyPage {
             } else {
               //追加数据
               this.lazyDataSource.pushDataArray(this.array2)
+              this.controller.finishLoadMore()
             }
-            this.controller.finishLoadMore()
+
           }, 3000)
         }
       })

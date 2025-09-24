@@ -82,9 +82,9 @@ v2版本：点击直达：[lithe_refresh_v2](https://ohpm.openharmony.cn/#/cn/de
 
 ## 开发环境
 
-DevEco Studio NEXT Developer Beta1,Build Version: 5.0.7.200
+DevEco Studio NEXT Developer Beta1,Build Version: 5.1.1.823
 
-Api版本：**12**
+Api版本：**>12**
 
 modelVersion：5.0.0
 
@@ -105,7 +105,7 @@ ohpm install @abner/refresh_v2
 方式二：在工程的oh-package.json5中设置三方包依赖，配置示例如下：
 
 ```
-"dependencies": { "@abner/refresh_v2": "^1.0.2"}
+"dependencies": { "@abner/refresh_v2": "^1.0.3"}
 ```
 
 <p align="center"><img src="https://vipandroid-image.oss-cn-beijing.aliyuncs.com/harmony/refresh/harmonyos_log_module.jpg" width="300"></p>

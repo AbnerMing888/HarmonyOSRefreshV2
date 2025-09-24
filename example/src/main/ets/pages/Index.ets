@@ -47,7 +47,7 @@ struct Index {
       "pages/sticky/ArbitrarilyStickyTopPage", //任意布局吸顶刷新
       "pages/sticky/StickTopRefreshViewPage", //吸顶刷新，上拉顶部不动
       "pages/tabs/TabsPage", //结合Tabs使用
-      "pages/list/ListAutoRefreshPage",//自动刷新
+      "pages/list/ListAutoRefreshPage", //自动刷新
       "pages/list/ListViewPositioningPage", //位置定位
       "pages/list/ListViewEnableSpringPage",//刷新加载禁止后带阻尼
     ]
@@ -59,7 +59,7 @@ struct Index {
 
     let gridName = [
       "普通数据模式", "懒加载数据模式", "自适应高度", "下拉刷新", "上拉加载", "刷新&加载", "模拟网络数据(懒加载)",
-      "带有头", "带有尾", "页面吸顶刷新", "页面顶部吸顶刷新", "自定义刷新头加载尾", "网格拖拽"
+      "带有头", "带有尾", "页面吸顶刷新", "页面顶部吸顶刷新", "自定义刷新头加载尾", "网格拖拽", "列数动态更新"
     ]
 
     let gridUrl = [
@@ -75,7 +75,8 @@ struct Index {
       "pages/grid/GridStickyTopPage", //页面吸顶
       "pages/grid/GridStickLayoutViewPage", //页面顶部吸顶
       "pages/grid/GridRefreshHeaderFooterPage", // 自定义刷新头加载尾
-      "pages/grid/GridDropPage"
+      "pages/grid/GridDropPage",
+      "pages/grid/GridViewUpdateColumnPage",//刷新加载网格列表
     ]
 
     let gridDataArray: GridData[] = []
@@ -86,6 +87,7 @@ struct Index {
 
     let waterFlowName = [
       "普通数据模式", "懒加载数据模式", "带有头的瀑布流列表", "瀑布流页面吸顶", "固定标题栏吸顶", "任意布局吸顶"
+      , "列数动态更新"
     ]
 
     let waterFlowUrl = [
@@ -94,7 +96,8 @@ struct Index {
       "pages/staggered/StaggeredHeadPage", //带有头的瀑布流列表
       "pages/sticky/StickyTopStaggeredPage", //瀑布流页面吸顶
       "pages/sticky/StickyTopActionBarPage", //瀑布流页面吸顶固定标题栏
-      "pages/staggered/ArbitrarilyStaggeredStickyTopPage",//顶部任意位置吸顶
+      "pages/staggered/ArbitrarilyStaggeredStickyTopPage", //顶部任意位置吸顶
+      "pages/staggered/StaggeredUpDateColumnPage",//瀑布流列表动态更改列数
     ]
 
     let waterFlowDataArray: GridData[] = []

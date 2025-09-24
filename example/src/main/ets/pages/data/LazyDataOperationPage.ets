@@ -67,7 +67,7 @@ struct LazyDataOperationPage {
             _this.dataSource.deleteLast()
             break;
           case 7: //删除指定一个
-            _this.dataSource.deleteData(0)
+            _this.dataSource.deleteData(2)
             break;
           case 8: //删除全部
             _this.dataSource.deleteAll()

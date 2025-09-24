@@ -1,5 +1,5 @@
 import { ActionBar } from '../ActionBar'
-import { GridView } from '@abner/refresh_v2'
+import { GridView, RefreshController } from '@abner/refresh_v2'
 
 /**
  * AUTHOR:AbnerMing
@@ -11,6 +11,7 @@ import { GridView } from '@abner/refresh_v2'
 @ComponentV2
 struct GridViewPage {
   @Local array: Array<number> = []
+  controller: RefreshController = new RefreshController()
 
   aboutToAppear() {
     for (let i = 0; i < 50; i++) {
@@ -32,14 +33,20 @@ struct GridViewPage {
       .textAlign(TextAlign.Center)
       .border({ width: 1, color: Color.Pink })
       .margin({ top: 10 })
-
   }
+
+  @Local isTwo: boolean = true
 
   build() {
     Column() {
       ActionBar({ title: "普通的列表GridView" })
+        .onClick(() => {
+          this.isTwo = !this.isTwo
+          this.controller.notifyAttribute()
+        })
       GridView({
         items: this.array, //数据源 数组
+        controller: this.controller,
         itemLayout: (item, index) => this.itemLayout(item, index),
         gridAttribute: (attr) => {
           attr.edgeEffect = EdgeEffect.Spring //设置阻尼效果

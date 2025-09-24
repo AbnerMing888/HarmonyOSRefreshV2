@@ -37,14 +37,14 @@ struct ListAdaptiveViewPage {
   build() {
     Column() {
       ActionBar({ title: "自适应高度" })
+
       ListView({
         items: this.array, //数据源 数组，可以任意类型，自定义对象[],number[],string[]……
         itemLayout: this.itemLayout, //转成你需要的对象
         isAdaptiveHeight: true, //是否需要自适应高度
-        // refreshHeight: 200,//设置整体的高度
+        isSettingMarginBottom: false, //不设置距离底部距离
         listAttribute: (attr) => {
           attr.edgeEffect = EdgeEffect.Spring //设置阻尼效果
-          attr.contentEndOffset = 20 //设置内容区末尾偏移量，目的为了可见
         }
       })
 

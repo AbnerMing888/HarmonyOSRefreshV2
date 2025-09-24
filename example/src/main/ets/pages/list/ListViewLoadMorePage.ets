@@ -52,6 +52,7 @@ struct ListViewLoadMorePage {
           //上拉加载
           setTimeout(() => {
             //模拟耗时
+            this.array.push(100)
             this.controller.finishLoadMore()
           }, 3000)
         }

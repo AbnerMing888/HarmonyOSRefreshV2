@@ -17,6 +17,7 @@ struct ListViewLazyPage {
     for (let i = 0; i < 30; i++) {
       array.push(i)
     }
+    //懒加载初始化数据
     this.lazyDataSource?.initData(array)
   }
 
@@ -44,7 +45,6 @@ struct ListViewLazyPage {
         itemLayout: this.itemLayout, //转成你需要的对象
         listAttribute: (attr) => {
           attr.edgeEffect = EdgeEffect.Spring
-          attr.contentEndOffset = 20 //设置内容区末尾偏移量，目的为了可见
         }
       })
     }

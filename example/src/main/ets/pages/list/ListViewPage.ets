@@ -43,7 +43,6 @@ struct ListViewPage {
         itemLayout: this.itemLayout, //转成你需要的对象
         listAttribute: (attr) => {
           attr.edgeEffect = EdgeEffect.Spring //设置阻尼效果
-          attr.contentEndOffset = 20 //设置内容区末尾偏移量，目的为了可见
         }
       })
     }.width("100%")

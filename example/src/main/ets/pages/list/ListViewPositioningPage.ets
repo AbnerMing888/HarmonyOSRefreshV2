@@ -74,7 +74,7 @@ struct ListViewPositioningPage {
             this.controller.finishLoadMore()
           }, 3000)
         }
-      })
+      }).layoutWeight(1)
     }
   }
 }

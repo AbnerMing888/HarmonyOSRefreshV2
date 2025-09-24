@@ -41,6 +41,7 @@ struct GridAdaptiveViewPage {
       GridView({
         items: this.array, //数据源 数组
         isAdaptiveHeight: true, //是否需要自适应高度
+        isSettingMarginBottom: false, //不设置距离底部距离
         itemLayout: (item, index) => this.itemLayout(item, index),
         gridAttribute: (attr) => {
           attr.edgeEffect = EdgeEffect.Spring //设置阻尼效果
