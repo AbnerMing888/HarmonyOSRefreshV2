@@ -1,0 +1,115 @@
+import { TitleBar } from '@abner/bar'
+import {
+  LoadMoreLayoutStatusModel,
+  RefreshController,
+  RefreshLayoutStatusModel,
+  RefreshView
+} from '@abner/refresh_v2'
+import { RouterPath } from '@abner/router'
+import { ListItemV2View } from '../../../view/ListItemV2View'
+
+/**
+ * AUTHOR:AbnerMing
+ * DATE:2024/11/13
+ * INTRODUCE:自定义刷新头和加载尾，支持多种类型
+ * */
+
+@RouterPath("example_Rv2RefreshHeaderAndFooterPage")
+@ComponentV2
+export struct Rv2RefreshHeaderAndFooterPage {
+  @Local testArray: number[] = []
+  scroller: Scroller = new Scroller()
+  controller: RefreshController = new RefreshController()
+
+  aboutToAppear(): void {
+    for (let i = 0; i < 20; i++) {
+      this.testArray.push(i)
+    }
+  }
+
+  @Builder
+  itemLayout() {
+    List({ scroller: this.scroller }) {
+      ForEach(this.testArray, (index: number) => {
+        ListItem() {
+          ListItemV2View({ index: index })
+        }
+      }, (item: string, index: number) => JSON.stringify(item) + "_" + index)
+    }
+    .scrollBar(BarState.Off)
+    .edgeEffect(EdgeEffect.None)
+    .width("100%")
+    .height("100%")
+    .padding({ left: 10, right: 10 })
+    .nestedScroll({
+      scrollForward: NestedScrollMode.PARENT_FIRST,
+      scrollBackward: NestedScrollMode.PARENT_FIRST
+    })
+  }
+
+  /**
+   * AUTHOR:AbnerMing
+   * INTRODUCE:自定义刷新头
+   * */
+  @Builder
+  headerRefreshLayout(model: RefreshLayoutStatusModel) {
+    Column() {
+      Text("" + model.status)
+        .fontColor(Color.White)
+    }.width("100%")
+    .height(80)
+    .justifyContent(FlexAlign.Center)
+    .backgroundColor($r("app.color.tab_select_color"))
+  }
+
+  /**
+   * AUTHOR:AbnerMing
+   * INTRODUCE:自定义刷新尾部
+   * */
+  @Builder
+  footerLoadLayout(model: LoadMoreLayoutStatusModel) {
+    Column() {
+      Text("" + model.status)
+        .fontColor(Color.White)
+    }.width("100%")
+    .height(80)
+    .justifyContent(FlexAlign.Center)
+    .backgroundColor($r("app.color.tab_select_color"))
+  }
+
+  build() {
+    Column() {
+      TitleBar({
+        title: "(V2)【自定义刷新头和加载尾】"
+      })
+
+      RefreshView({
+        scroller: this.scroller,
+        controller: this.controller,
+        refreshHeaderAttribute: (attr) => {
+          attr.height = 80 //刷新头的高度
+        },
+        headerRefreshLayout: this.headerRefreshLayout,
+        footerLoadLayout: this.footerLoadLayout,
+        itemLayout: () => {
+          this.itemLayout()
+        },
+        onRefresh: () => {
+          //下拉刷新
+          setTimeout(() => {
+            this.controller.finishRefresh()
+          }, 2000)
+        },
+        onLoadMore: () => {
+          //上拉加载
+          setTimeout(() => {
+            for (let i = 0; i < 20; i++) {
+              this.testArray.push(i)
+            }
+            this.controller.finishLoadMore()
+          }, 2000)
+        }
+      })
+    }
+  }
+}

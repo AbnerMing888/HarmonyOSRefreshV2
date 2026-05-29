@@ -1,0 +1,111 @@
+import {
+  ListView, RefreshController, RefreshPositionEnum
+} from '@abner/refresh_v2'
+import { RouterPath } from '@abner/router'
+import { ListItemV2View } from '../../../../view/ListItemV2View'
+
+/**
+ * AUTHOR:AbnerMing
+ * DATE:2024/7/26
+ * INTRODUCE:吸顶页面 -- 任意布局
+ * */
+
+@RouterPath("example_ListLayoutV2ArbitrarilyStickyTopPage")
+@ComponentV2
+export struct ListLayoutV2ArbitrarilyStickyTopPage {
+  @Local listPosition: RefreshPositionEnum = RefreshPositionEnum.BOTTOM
+
+  build() {
+    Scroll() {
+      Column() {
+        Text("头View")
+          .fontColor(Color.White)
+          .width("100%")
+          .height("40%")
+          .backgroundColor($r("app.color.tab_select_color"))
+          .textAlign(TextAlign.Center)
+
+        Column() {
+
+          Text("我是固定视图")
+            .fontColor(Color.White)
+            .width("100%")
+            .height(60)
+            .backgroundColor($r("app.color.tab_normal_color"))
+            .textAlign(TextAlign.Center)
+
+          StickyListView({ listPosition: this.listPosition })
+        }.width("100%")
+        .height("100%")
+
+      }.width("100%")
+    }
+    .scrollBar(BarState.Off)
+    .width('100%')
+    .onReachStart(() => {
+      this.listPosition = RefreshPositionEnum.TOP
+    })
+    .onReachEnd(() => {
+      this.listPosition = RefreshPositionEnum.BOTTOM
+    })
+    .onScrollFrameBegin((offset: number, _: ScrollState) => {
+      if ((this.listPosition == RefreshPositionEnum.TOP && offset <= 0) || (
+        this.listPosition == RefreshPositionEnum.BOTTOM && offset >= 0
+      )
+      ) {
+        return { offsetRemain: 0 }
+      }
+      //不在底部
+      this.listPosition = RefreshPositionEnum.CENTER
+      return { offsetRemain: offset }
+    })
+
+  }
+}
+
+/*
+* Author:AbnerMing
+* Describe:吸顶列表
+*/
+@ComponentV2
+struct StickyListView {
+  @Param controller: RefreshController = new RefreshController() //刷新控制器
+  @Local arr1: number[] = [] //实际情况当以tab指示器对应得数据为主，这里仅仅是测试
+  @Param listPosition: RefreshPositionEnum = RefreshPositionEnum.TOP
+
+  aboutToAppear() {
+    for (let i = 0; i < 20; i++) {
+      this.arr1.push(i)
+    }
+  }
+
+  @Builder
+  itemLayout(_: Object, index: number) {
+    ListItemV2View({ index: index })
+  }
+
+  build() {
+    ListView({
+      items: this.arr1,
+      itemLayout: this.itemLayout,
+      controller: this.controller,
+      refreshStickyPosition: this.listPosition,
+      isRefreshSticky: true,
+      onRefresh: () => {
+        //下拉刷新 模拟耗时
+        setTimeout(() => {
+          this.controller.finishRefresh()
+        }, 3000)
+      },
+      onLoadMore: () => {
+        // 上拉加载 模拟耗时
+        setTimeout(() => {
+          for (let i = 0; i < 20; i++) {
+            this.arr1.push(i)
+          }
+          this.controller.finishLoadMore()
+        }, 3000)
+      }
+    })
+  }
+}
